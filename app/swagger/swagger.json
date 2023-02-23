@@ -1,0 +1,83 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "ChatGPT API",
+      "version": "1.0.0",
+      "description": "API for ChatGPT chatbot service"
+    },
+    "basePath": "/",
+    "schemes": [
+      "http"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+      "/v1/conversation": {
+        "post": {
+          "summary": "Start a conversation with the ChatGPT chatbot",
+          "description": "Starts a conversation with the ChatGPT chatbot using the given prompt",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "prompt",
+              "in": "body",
+              "required": true,
+              "description": "The prompt for the conversation",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "prompt": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "text": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad request",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "error": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "error": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
